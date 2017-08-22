@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>JavaScript Exercises</title>
+
+<script>
+
+var modcheck3;
+var modcheck5;
+
+for(var i = 1; i < 101; i++)	{
+	modcheck3 = i % 3;
+	modcheck5 = i % 5;
+
+	if ((modcheck3 === 0) && (modcheck5 ===0))  {
+		document.write(i," FizzBuzz" + '<br>');}
+	else if (modcheck3 === 0) {
+		document.write(i," Fizz" + '<br>');}
+	else if (modcheck5 === 0) {
+		document.write(i," Buzz" + '<br>');}
+	else {
+		document.write(i + '<br>');
+	}	
+};
+	
+//fizbuzz with variables
+
+var divby3 = 3;
+var divby5 = 5;
+var fizz = "Fizz";
+var buzz = "Buzz";
+
+
+var modcheck3;
+var modcheck5;
+
+for(var i = 1; i < 101; i++)	{
+	modcheck3 = i % divby3;
+	modcheck5 = i % divby5;
+
+	if ((modcheck3 === 0) && (modcheck5 ===0))  {
+		document.write(i,fizz + buzz + '<br>');}
+	else if (modcheck3 === 0) {
+		document.write(i,fizz + '<br>');}
+	else if (modcheck5 === 0) {
+		document.write(i,buzz + '<br>');}
+	else {
+		document.write(i + '<br>');
+	}	
+};
+
+
+// var x =document.createElement("input");
+// x.setAttribute("type","number");
+
+var number = document.getElementById("number").value;
+
+function save() {
+      var number;
+      number = document.getElementById("number").value;
+      // Do whatever you want with the value here.
+}
+
+
+
+
+</script>
+
+
+</head>
+
+<body>
+<div id="main">
+
+	<input type="number" id="number" onchange="save()">
+
+</body>
+
+</html>

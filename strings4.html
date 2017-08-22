@@ -1,0 +1,34 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <title>JavaScript Exercises</title>
+
+    <script>
+        var intext;
+        
+        function save() {
+            intext = document.getElementById("intext").value;
+            document.write(intext + '<br>');
+
+            var strlength = intext.length;
+            document.write(strlength);
+          
+
+            if (strlength <=2) {
+                document.write("String is not 3 three or more characters long");
+                return;
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <input type="text" id="intext" onchange="save()">
+
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>JavaScript Exercises</title>
+
+		<script>
+		
+		var name = "\" He Said \" My name is Elliot \" \"";
+
+		// document.write(price1);
+
+		// window.alert(price1);
+		// console.log(price1);
+
+		var age2 = 0;
+
+		var name2 = name.toUpperCase();
+
+		document.write(name2 + '<br>');
+
+
+		var number1 = 5;
+		var string1 = "This is some text concatenated with a number ";
+
+		var concatvars = string1 + number1;
+
+		document.write(concatvars + '<br>');
+
+
+		//adding into an array
+		var myList = ["oats","peas","beans"];
+		
+
+		document.write("Display original array" + '<br>');
+
+		for(var i = 0; i < myList.length; i++)
+		{
+		document.write(myList[i] + '<br>');
+		}
+
+
+		myList[myList.length] = "barley";
+
+
+		document.write("Display array after item added" + '<br>');
+
+
+		for(var i = 0; i < myList.length; i++)
+		{
+		document.write(myList[i] + '<br>');
+		}
+
+
+		myList.splice(3,1);
+
+
+		document.write("Display array after item removed" + '<br>');
+
+		for(var i = 0; i < myList.length; i++)
+		{
+		document.write(myList[i] + '<br>');
+		}
+
+
+		var myObject = {name:'Jack',age:41,occupation:'GP'};
+
+
+
+		var age2 = myObject.age;
+
+
+		function checkAge(age2) {
+			if (age2 >= 20 && age2 <= 40) {
+				document.write("Age ",age2," Within range" + '<br');
+			}
+			else {
+				document.write("Age ",age2," Not within range" + '<br>');
+			} 
+
+		};
+
+
+		checkAge(age2);
+
+
+		for(var i = 1; i < 11; i++) {
+		document.write(i + '<br>');
+		};
+
+        var modcheck = 0;
+
+		for(var i = 1; i < 11; i++)	{
+         modcheck = i % 2;
+         if (modcheck === 0) {
+            document.write(i + '<br>');  
+         }
+            
+		
+		};
+
+
+
+		</script>
+
+
+
+</head>
+
+<body>
+<div id="main">
+
+
+
+		<br />
+
+
+
+</body>
+
+</html>
