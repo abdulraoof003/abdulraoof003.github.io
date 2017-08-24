@@ -6,22 +6,28 @@
 
     <script>
         var intext;
-        
+
         function save() {
+            var triplecount = 0;
             intext = document.getElementById("intext").value;
             document.write(intext + '<br>');
 
             var strlength = intext.length;
-            document.write(strlength);
-          
 
-            if (strlength <=2) {
+            if (strlength <= 2) {
                 document.write("String is not 3 three or more characters long");
                 return;
             }
 
-        }
 
+            for (i = 0; i < strlength - 2; i++) {
+                if ((intext.substr(i, 1) === intext.substr(i + 1, 1)) && (intext.substr(i + 1, 1) === intext.substr(i + 2, 1))) {
+                    triplecount++;
+                }
+            }
+            document.write("Triple characters = ", triplecount);
+
+        }
     </script>
 </head>
 

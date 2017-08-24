@@ -1,0 +1,74 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <title>JavaScript Exercises</title>
+
+    <script>
+        function addPara() {
+            var para = document.createElement("p");
+            para.setAttribute("id", "p3");
+
+
+            var node = document.createTextNode("This is new.");
+
+            para.appendChild(node);
+
+            var element = document.getElementById("div1");
+
+            element.appendChild(para);
+
+        }
+
+        function replacePara() {
+            var intext;
+
+            intext = document.getElementById("intext").value;
+
+            var para = document.createElement("p");
+            para.setAttribute("id", "p3");
+            var node = document.createTextNode(intext);
+            para.appendChild(node);
+
+
+            var parent = document.getElementById("div1");
+            var child = document.getElementById("p3");
+            parent.replaceChild(para, child);
+
+        }
+
+        function deletePara() {
+
+
+            var parent = document.getElementById("div1");
+            var child = document.getElementById("p3");
+            parent.removeChild(child);
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div id="div1">
+
+        <p id="p1">This a paragraph.</p>
+        <p id="p2">This is another paragraph.</p>
+
+        <button onclick="addPara()">Click me to add paragraph</button>
+
+        <input type="text" id="intext">
+
+        <button onclick="replacePara()">Click me to replace paragraph</button>
+
+        <button onclick="deletePara()">Click me to remove the paragraph</button>
+
+
+        <script>
+
+        </script>
+    </div>
+</body>
+
+</html>
