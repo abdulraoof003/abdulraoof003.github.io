@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
 
     <title>King Search</title>
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-      <header>
+    <header>
 
-      </header>
+    </header>
 
-      <section>
+    <section>
 
-      <input type="text" id="intext">
+        <input type="text" id="intext">
 
-      <button type = "button" onclick="save()">Click Me To Search</button>
+        <button type="button" onclick="save()">Click Me To Search</button>
 
-      </section>
+    </section>
 
     <script>
-
         var header = document.querySelector('header');
         var section = document.querySelector('section');
 
@@ -32,38 +32,44 @@
 
         var myPara1 = document.createElement('p');
         myPara1.textContent = "Please type the name of the king and click on the button to start the search";
-        header.appendChild(myPara1); 
+        header.appendChild(myPara1);
 
-      var searchkingtext;
+        var searchkingtext;
 
-      function save() {
-          searchkingtext = document.getElementById("intext").value;
-          searchkings(searchkingtext);
+
+        function save() {
+            searchkingtext = document.getElementById("intext").value;
+            searchkings(searchkingtext);
         }
 
 
-      function searchkings(searchkingtext) { 
-          var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
-          var request = new XMLHttpRequest(); 
-          request.open('GET', requestURL); 
-          request.responseType = 'json';
-          request.send(); 
+        function searchkings(searchkingtext) {
+            var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
+            var request = new XMLHttpRequest();
+            request.open('GET', requestURL);
+            request.responseType = 'json';
+            request.send();
+            var kingfound = "No";
+            request.onload = function() {
+                var kings = request.response;
 
-          request.onload = function() {
-            var kings = request.response;
+                for (var i = 0; i < kings.length; i++) {
 
-            for (var i = 0; i < kings.length; i++) {
-
-              if (kings[i].nm == searchkingtext) {
-                document.write("Found King:   " + kings[i].nm);
-                document.write(" City: " + kings[i].cty);
-                document.write(" House: " + kings[i].hse);
-                document.write(" Years King: " + kings[i].yrs);
-              }
+                    if (kings[i].nm == searchkingtext) {
+                        document.write("Found King:   " + kings[i].nm);
+                        document.write(" City: " + kings[i].cty);
+                        document.write(" House: " + kings[i].hse);
+                        document.write(" Years King: " + kings[i].yrs);
+                        kingfound = "Yes";
+                    }
+                }
             }
-          }          
-        }    
-   
+            if (kingfound == "No") {
+                document.write("King not found:  " + searchkingtext);
+            }
+
+        }
     </script>
-  </body>
+</body>
+
 </html>

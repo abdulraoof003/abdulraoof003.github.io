@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Car Garage System</title>
+
+
+</head>
+
+<body>
+
+    <h1>Garage System</h1>
+    <form name="inputcar">
+        <h1>To add to garage queue please enter car information: Car Reg, Make and Model</h1>
+        <input id="carreg" type="text" />
+        <input id="make" type="text" />
+        <input id="model" type="text" />
+        <input type="button" value="Save" onclick="insertCarsQueue()">
+        <input type="button" value="Clear Form garage queue" onclick="clear1()">
+        <input type="button" value="Display garage contents" onclick="displayGarageContents()">
+    </form>
+
+
+    <form name="addtogarage">
+        <h1>To add car to garage please enter: car reg, car repair and price
+            <h1>
+                <input id="searchcarreg" type="text" />
+                <input id="repairtype" type="text" />
+                <input id="repairprice" type="number" />
+                <input type="button" value="Save" onclick="searchAndAdd()">
+                <input type="button" value="Clear Form move to garage" onclick="clear2()">
+    </form>
+    <div id="div1"></div>
+
+</body>
+
+
+<script use strict>
+    //Array for cars waiting to go into the garage
+    var carGarageQueue = [];
+
+
+    // Array for cars in garage
+    var carInGarage = [];
+
+
+    function insertCarsQueue() {
+
+        var carRegInput = document.getElementById("carreg");
+        var makeInput = document.getElementById("make");
+        var modelInput = document.getElementById("model");
+
+
+        let car = {
+            carReg: carRegInput.value,
+            make: makeInput.value,
+            model: model.value,
+        }
+
+        carGarageQueue.push(car);
+
+        console.log(carGarageQueue);
+
+        // carGarageQueue.forEach(function(element) {
+        //     console.log(element)
+
+        // }, this);
+
+        clear1();
+    }
+
+
+    function searchAndAdd() {
+
+        var inSearchCarReg = document.getElementById("searchcarreg");
+        var inRepairType = document.getElementById("repairtype");
+        var inRepairPrice = document.getElementById("repairprice");
+
+        for (let i = 0; i < carGarageQueue.length; i++) {
+
+            if (inSearchCarReg.value === carGarageQueue[i].carReg) {
+
+                let carGarage = {
+                    garageCarReg: carGarageQueue[i].carReg,
+                    garageMake: carGarageQueue[i].make,
+                    garageModel: carGarageQueue[i].model,
+                    garageRepairType: inRepairType.value,
+                    garageRepairPrice: inRepairPrice.value
+                }
+
+                // Add car into garage array
+                carInGarage.push(carGarage);
+
+                console.log(carInGarage);
+
+                // Remove car from garage queue array
+                carGarageQueue.splice(i, 1);
+                console.log(carGarageQueue);
+
+                clear2();
+                return;
+            }
+        }
+    }
+
+
+    function clear1() {
+        document.forms.inputcar.reset();
+
+    }
+
+    function clear2() {
+        document.forms.addtogarage.reset();
+
+    }
+
+    function displayGarageContents() {
+        let dispCar = "";
+        document.getElementById('div1').innerHTML = "Cars currently in garage";
+        for (let j = 0; j < carInGarage.length; j++) {
+
+            dispCar = (" Car Reg: " + carInGarage[j].garageCarReg + " Make: " + carInGarage[j].garageMake +
+                " Model: " + carInGarage[j].garageModel + " Repair Type: " + carInGarage[j].garageRepairType +
+                " Repair Price: " + carInGarage[j].garageRepairPrice) + dispCar;
+
+        }
+        document.getElementById('div1').innerHTML = dispCar;
+        // document.getElementById('div1').innerHTML = JSON.stringify(carInGarage, null, 4);
+        console.log(carInGarage);
+    }
+</script>
+</body>
+
+</html>
