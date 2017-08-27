@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html>
 
+<!-- <style>
+    .text-label {
+        color: #cdcdcd;
+        font-weight: bold;
+    }
+</style> -->
+
+
 <head>
     <meta charset=utf-8 />
     <title>Car Garage System</title>
-
 
 </head>
 
 <body>
 
-    <h1>Garage System</h1>
+    <h1 align='center'>Garage System</h1>
     <form name="inputcar">
-        <h1>To add to garage queue please enter car information: Car Reg, Make and Model</h1>
-        <input id="carreg" type="text" />
+        <h2>To add to garage queue please enter car information: Car Reg, Make and Model</h2>
+        <label for="carreg">Registration</label>
+        <input id="carreg" type="text" title="car reg">
+        <label for="make">Make</label>
         <input id="make" type="text" />
+        <label for="model">Model</label>
         <input id="model" type="text" />
+        </br>
         <input type="button" value="Save" onclick="insertCarsQueue()">
         <input type="button" value="Clear Form garage queue" onclick="clear1()">
         <input type="button" value="Display garage contents" onclick="displayGarageContents()">
+        <input type="button" value="Display total car repair costs" onclick="displayRepairCosts()">
+        </br>
+        </br>
     </form>
 
 
     <form name="addtogarage">
-        <h1>To add car to garage please enter: car reg, car repair and price
-            <h1>
-                <input id="searchcarreg" type="text" />
-                <input id="repairtype" type="text" />
-                <input id="repairprice" type="number" />
-                <input type="button" value="Save" onclick="searchAndAdd()">
-                <input type="button" value="Clear Form move to garage" onclick="clear2()">
+        <h2>To add car to garage please enter: Car Reg, Repair Type and Price</h2>
+        <label for="searchcarreg">Registration</label>
+        <input id="searchcarreg" type="text" />
+        <label for="repairtype">Repair Type</label>
+        <input id="repairtype" type="text" />
+        <label for="repairprice">Repair Price</label>
+        <input id="repairprice" type="number" />
+        </br>
+        <input type="button" value="Save" onclick="searchAndAdd()">
+        <input type="button" value="Clear Form move to garage" onclick="clear2()">
+        </br>
     </form>
     <div id="div1"></div>
 
@@ -71,6 +89,19 @@
     }
 
 
+    function displayRepairCosts() {
+        let dispCar2 = "";
+        var totalRepairCosts = 0;
+        for (let k = 0; k < carInGarage.length; k++) {
+            totalRepairCosts = totalRepairCosts + parseFloat(carInGarage[k].garageRepairPrice);
+        }
+
+        dispCar2 = ("Total repair costs: " + totalRepairCosts);
+        document.getElementById('div1').innerHTML = dispCar2;
+    }
+
+
+
     function searchAndAdd() {
 
         var inSearchCarReg = document.getElementById("searchcarreg");
@@ -78,6 +109,7 @@
         var inRepairPrice = document.getElementById("repairprice");
 
         for (let i = 0; i < carGarageQueue.length; i++) {
+
 
             if (inSearchCarReg.value === carGarageQueue[i].carReg) {
 
@@ -104,7 +136,6 @@
         }
     }
 
-
     function clear1() {
         document.forms.inputcar.reset();
 
@@ -117,16 +148,29 @@
 
     function displayGarageContents() {
         let dispCar = "";
-        document.getElementById('div1').innerHTML = "Cars currently in garage";
+
+        var myArticle = document.createElement('article');
+        var myH2 = document.createElement('h2');
+        var myList = document.createElement('ul');
+        myH2.textContent = 'Cars in Garage';
+
         for (let j = 0; j < carInGarage.length; j++) {
+            var listItem = document.createElement('li');
 
             dispCar = (" Car Reg: " + carInGarage[j].garageCarReg + " Make: " + carInGarage[j].garageMake +
                 " Model: " + carInGarage[j].garageModel + " Repair Type: " + carInGarage[j].garageRepairType +
-                " Repair Price: " + carInGarage[j].garageRepairPrice) + dispCar;
+                " Repair Price: " + carInGarage[j].garageRepairPrice);
+            listItem.textContent = dispCar;
+            myList.appendChild(listItem);
 
         }
-        document.getElementById('div1').innerHTML = dispCar;
-        // document.getElementById('div1').innerHTML = JSON.stringify(carInGarage, null, 4);
+
+        myArticle.appendChild(myH2);
+
+        myArticle.appendChild(myList);
+
+        div1.appendChild(myArticle);
+
         console.log(carInGarage);
     }
 </script>
